@@ -1,4 +1,5 @@
 import yfinance as yf
+from alias import FINANCIAL_ALIASES
 import pandas as pd
 import os
 mapping=pd.read_csv("Company_mapping.csv")
@@ -19,3 +20,67 @@ def download(Name):
     ticker.financials.to_csv(f"flagr/income_{Name}.csv")
     ticker.balance_sheet.to_csv(f"flagr/balance_sheet_{Name}.csv")
     ticker.cash_flow.to_csv(f"flagr/cash_flow_{Name}.csv")
+
+def clean_data(df):
+    df=df.dropna(axis=0,how="all")
+    df=df.dropna(axis=1,how="all")
+    df.columns=pd.to_datetime(df.columns,errors="coerce")
+    df=df.fillna(0)
+    return df
+
+def get_value(df,alias,idx=0):
+    for name in alias:
+        if name in df.index:
+            return df.loc[name].iloc[idx]
+    return 0
+    
+def compute_benish(Name:str):
+    income=pd.read_csv(f"flagr/income_{Name}.csv",index_col=0)
+    balance=pd.read_csv(f"flagr/balance_sheet_{Name}.csv",index_col=0)
+    cash_flow=pd.read_csv(f"flagr/cash_flow_{Name}.csv",index_col=0)
+    
+    income=clean_data(income)
+    balance=clean_data(balance)
+    cash_flow=clean_data(cash_flow)
+    
+    rev_t=get_value(income,FINANCIAL_ALIASES["revenue"],0)
+    rev_t1=get_value(income,FINANCIAL_ALIASES["revenue"],1)
+    
+    ar_t = get_value(balance, FINANCIAL_ALIASES["receivables"], 0)
+    ar_t1 = get_value(balance, FINANCIAL_ALIASES["receivables"], 1)
+
+    ni_t = get_value(income, FINANCIAL_ALIASES["net_income"], 0)
+
+    ta_t = get_value(balance, FINANCIAL_ALIASES["total_assets"], 0)
+
+    cfo_t = get_value(cash_flow, FINANCIAL_ALIASES["operating_cashflow"], 0)
+    
+    ltd_t = get_value(balance, FINANCIAL_ALIASES["long_term_debt"], 0)
+    ltd_t1 = get_value(balance, FINANCIAL_ALIASES["long_term_debt"], 1)
+    
+    cl_t = get_value(balance, FINANCIAL_ALIASES["current_liabilities"], 0)
+    cl_t1 = get_value(balance, FINANCIAL_ALIASES["current_liabilities"], 1)
+    def safe_div(a,b):
+        return a/b if b!=0 else 0
+    dsri = safe_div(
+    safe_div(ar_t, rev_t),
+    safe_div(ar_t1, rev_t1)
+    )
+    sgi = safe_div(rev_t, rev_t1)
+    tata = safe_div(ni_t - cfo_t, ta_t)
+    
+    lvgi = safe_div(
+    safe_div(ltd_t + cl_t, ta_t),
+    safe_div(ltd_t1 + cl_t1, ta_t)
+    )
+    
+    m = -4.84 + 0.92*dsri + 0.89*sgi + 4.67*tata - 0.32*lvgi
+    
+    risk="high" if m>-1.78 else "low"
+    return{
+        "Company ": Name,
+        "m_score ": m,
+        "Risk ": risk
+        
+    }
+    
