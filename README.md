@@ -1,26 +1,26 @@
-# FLAGR-AI
+FLAGR-AI
 
-FLAGR-AI is an evolving backend system designed to build intelligent financial analysis tools.
+FLAGR-AI is an evolving backend system designed to build intelligent financial analysis tools and automated fraud-risk evaluation pipelines.
 
-Current capabilities:
+The project focuses on constructing reliable data ingestion, normalization, and scoring workflows over publicly available corporate financial statements.
 
-- Resolve official company names to NSE ticker symbols  
-- Ingest financial statement data using yfinance  
-- Store structured financial datasets for downstream analytics  
-- Built using FastAPI for scalable API-driven workflows  
-
-This project forms the foundation for automated fraud risk analysis, financial intelligence pipelines, and applied machine learning systems.
-
-## Tech Stack
-
-- Python
-- FastAPI
-- Pandas
-- yfinance
-
-## Future Work
-
-- Beneish M-Score integration  
-- ML-based fraud prediction models  
-- Financial statement upload parsing  
-- Risk scoring dashboards  
+Current Capabilities
+Resolve official company names and common aliases to NSE ticker symbols
+Ingest multi-period financial statements using yfinance
+Normalize and clean inconsistent financial data structures across companies
+Compute Beneish M-Score based fraud-risk signals
+Persist structured financial datasets for downstream analytics
+Symbol-based storage pipeline to ensure consistent multi-company processing
+FastAPI-driven modular endpoints for data ingestion and fraud scoring
+Early support for Nifty-universe batch evaluation workflows
+Tech Stack
+Python
+FastAPI
+Pandas
+yfinance
+SQLAlchemy (planned persistence layer)
+Future Work
+Beneish M-Score integration
+ML-based fraud prediction models
+Financial statement upload parsing
+Risk scoring dashboards
