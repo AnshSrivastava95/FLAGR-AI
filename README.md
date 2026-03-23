@@ -13,12 +13,14 @@ Persist structured financial datasets for downstream analytics
 Symbol-based storage pipeline to ensure consistent multi-company processing
 FastAPI-driven modular endpoints for data ingestion and fraud scoring
 Early support for Nifty-universe batch evaluation workflows
+
 Tech Stack
 Python
 FastAPI
 Pandas
 yfinance
 SQLAlchemy (planned persistence layer)
+
 Future Work
 Beneish M-Score integration
 ML-based fraud prediction models
