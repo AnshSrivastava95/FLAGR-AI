@@ -1,6 +1,50 @@
 company_name,symbol,aliases
-Infosys,INFY.NS,infosys ltd|infosys limited
-TCS,TCS.NS,tata consultancy|tata consulting
-Reliance Industries,RELIANCE.NS,ril|reliance
+Reliance Industries,RELIANCE.NS,reliance|ril
+Tata Consultancy Services,TCS.NS,tcs|tata consultancy
+Infosys,INFY.NS,infosys|infosys ltd|infosys limited
 HDFC Bank,HDFCBANK.NS,hdfc|hdfc bank ltd
-Yes Bank,YESBANK.NS,yes bank ltd
+ICICI Bank,ICICIBANK.NS,icici
+ITC,ITC.NS,itc ltd
+State Bank of India,SBIN.NS,sbi
+Axis Bank,AXISBANK.NS,axis
+Kotak Mahindra Bank,KOTAKBANK.NS,kotak
+Larsen & Toubro,LT.NS,l&t|lt
+Bharti Airtel,BHARTIARTL.NS,airtel
+Hindustan Unilever,HINDUNILVR.NS,hul
+Asian Paints,ASIANPAINT.NS,asian paints
+Maruti Suzuki,MARUTI.NS,maruti
+Titan Company,TITAN.NS,titan
+UltraTech Cement,ULTRACEMCO.NS,ultratech
+Sun Pharmaceutical,SUNPHARMA.NS,sun pharma
+NTPC,NTPC.NS,ntpc
+Power Grid Corporation,POWERGRID.NS,powergrid
+Nestle India,NESTLEIND.NS,nestle
+Adani Enterprises,ADANIENT.NS,adani ent
+Adani Ports,ADANIPORTS.NS,adani ports
+Coal India,COALINDIA.NS,coal india
+JSW Steel,JSWSTEEL.NS,jsw
+Tata Steel,TATASTEEL.NS,tata steel
+HCL Technologies,HCLTECH.NS,hcl
+Tech Mahindra,TECHM.NS,tech mahindra
+Wipro,WIPRO.NS,wipro
+Bajaj Finance,BAJFINANCE.NS,bajaj finance
+Bajaj Finserv,BAJAJFINSV.NS,bajaj finserv
+SBI Life Insurance,SBILIFE.NS,sbi life
+HDFC Life,HDFCLIFE.NS,hdfc life
+Grasim Industries,GRASIM.NS,grasim
+Dr Reddys Laboratories,DRREDDY.NS,dr reddy
+Cipla,CIPLA.NS,cipla
+Apollo Hospitals,APOLLOHOSP.NS,apollo
+Britannia Industries,BRITANNIA.NS,britannia
+Divis Laboratories,DIVISLAB.NS,divis
+Eicher Motors,EICHERMOT.NS,eicher
+Hero MotoCorp,HEROMOTOCO.NS,hero
+IndusInd Bank,INDUSINDBK.NS,indusind
+ONGC,ONGC.NS,ongc
+Tata Motors,TATAMOTORS.NS,tata motors
+Mahindra & Mahindra,M&M.NS,mnm|mahindra
+UPL,UPL.NS,upl
+BPCL,BPCL.NS,bpcl
+Hindalco Industries,HINDALCO.NS,hindalco
+Shree Cement,SHREECEM.NS,shree cement
+Trent,TRENT.NS,trent
