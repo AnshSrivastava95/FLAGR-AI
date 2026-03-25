@@ -2,6 +2,10 @@ import yfinance as yf
 from alias import FINANCIAL_ALIASES
 import pandas as pd
 import os
+from database import engine,SessionLocal
+from model import Base,FraudScore
+
+Base.metadata.create_all(bind=engine)
 mapping=pd.read_csv("Company_mapping.csv")
 def resolve_symbol(Name:str):
     Name=Name.lower().strip()
@@ -91,8 +95,18 @@ def compute_benish(Name:str):
     )
     
     m = -4.84 + 0.92*dsri + 0.89*sgi + 4.67*tata - 0.32*lvgi
-    
     risk="high" if m>-1.78 else "low"
+    db = SessionLocal()
+    record = FraudScore(
+    symbol=symbol,
+    company=Name,
+    m_score=m,
+    risk=risk
+)
+    db.add(record)
+    db.commit()
+    db.close()
+    
     return{
         "Company ": Name,
         "m_score ": m,

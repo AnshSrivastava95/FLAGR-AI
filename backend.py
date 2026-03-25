@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from main import download
 from main import compute_benish
+from database import SessionLocal
+from model import FraudScore
+
 app=FastAPI()
 @app.get("/")
 def home():
@@ -22,3 +25,27 @@ def benish_score(Name):
         "Company":Name.lower().strip(),
         "Result":result
     }
+
+@app.get("/scores")
+def get_scores():
+
+    db = SessionLocal()
+
+    data = db.query(FraudScore).all()
+
+    db.close()
+
+    return data
+
+@app.get("/scores/top-risk")
+def top_risk():
+
+    db = SessionLocal()
+
+    data = db.query(FraudScore)\
+             .order_by(FraudScore.m_score.desc())\
+             .all()
+
+    db.close()
+
+    return data
